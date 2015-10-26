@@ -1,4 +1,11 @@
 gems:
   - jekyll-sitemap
   
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      
 url: http://www.cieszynski.de
