@@ -16,12 +16,31 @@ section {
 }
 
 section div {
+    text-align:center;
     border: 1px solid red;
     position: absolute;
     width: 100%;
     height: 100%;
     background-image:         linear-gradient(to top, #fff 5px, transparent 50px); /* Standard syntax; must be last */
 }
+
+pictures {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+}
+
+picture {
+    display: inline-block;
+}
+
+img {
+    display: inline-block;
+}
+
+
         </style>
         
         <script>
@@ -31,16 +50,18 @@ section div {
     
     <body>{{ page.custom_css }} {{ page.flow.one }} {{ page.eins }}
         <main>
-        {{ content }}
             <section>
-            <div></div>
-            point            defined by the starting-point and the corner is perpendicular to the gradient line. That way, the color described by the <color-stop> will exactly apply to the corner point.
-            defined by the starting-point and the corner is perpendicular to the gradient line. That way, the color described by the <color-stop> will exactly apply to the corner point.
+                <picture>
+                    <img src="http://c2.staticflickr.com/4/3393/3625895405_4ceebd43d3_z.jpg" alt="alt" width="200%"/>
+                    aaa 
+                </picture>
             </section>
         </main>
         
-        {% for p page.p %}
+        {% for p in page.p %}
             {{ p }}
         {% endfor %}
+        
+
     </body>
 </html>
