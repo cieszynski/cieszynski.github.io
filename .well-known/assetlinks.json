@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "de.cieszynski.matik",
+    "sha256_cert_fingerprints": [
+      "BE:F5:DA:B0:C4:CD:74:50:54:EF:90:65:1F:F8:E9:16:2F:38:3E:32:85:F4:E6:BB:8C:01:F9:45:47:0B:69:BB"
+    ]
+  }
+}]
