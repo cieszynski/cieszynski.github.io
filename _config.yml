@@ -1,13 +1,13 @@
-gems:
-  - jekyll-sitemap
+#gems:
+#  - jekyll-sitemap
   
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-    values:
-      layout: "default"
+#defaults:
+#  -
+#    scope:
+#      path: "" # an empty string here means all files in the project
+#    values:
+#      layout: "default"
       
-url: http://www.cieszynski.de
+#url: http://www.cieszynski.de
 # Folders with dotfiles are ignored by default.
 include: [.well-known]
