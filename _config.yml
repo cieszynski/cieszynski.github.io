@@ -9,3 +9,5 @@ defaults:
       layout: "default"
       
 url: http://www.cieszynski.de
+# Folders with dotfiles are ignored by default.
+include: [.well-known]
