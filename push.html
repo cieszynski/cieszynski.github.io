@@ -125,7 +125,7 @@
                                         console.log(JSON.stringify(subscription));
 
                                         fetch(subscription.endpoint, {
-                                            method: 'POST', mode: 'no-cors', headers: {"TTL": 2419200,
+                                            method: 'POST', /*mode: 'no-cors',*/ headers: {"TTL": 2419200,
                                                 "Authorization": `WebPush ${jwt}`, "Crypto-Key": `p256ecdsa=${pubKey}`
                                                 /* "Authorization": `vapid t=${jwt} k=${x.public}`,  "Content-Encoding": "aes128gcm"*/
                                             }
