@@ -56,7 +56,7 @@
 
         const header = { "typ": "JWT", "alg": "ES256" }
         const claims = {
-            "aud": "https://updates.push.services.mozilla.com",//"https://fcm.googleapis.com"
+            "aud": "https://fcm.googleapis.com",//"https://updates.push.services.mozilla.com",//
             "exp": Math.floor(Date.now() * .001 + 3600),
             "sub": "mailto:firefox.com.40010791@cieszynski.de"
         }
