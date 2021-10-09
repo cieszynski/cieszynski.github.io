@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>push2
+
+    </title>
+    <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <script>
+        function ord(c) {
+            /* return an ordinal for a character
+            */
+            return c.charCodeAt(0);
+        }
+
+        function strToArray(str) {
+            /* convert a string into a ByteArray
+             *
+             * TextEncoders would be faster, but have a habit of altering
+             * byte order
+             */
+            let split = str.split("");
+            let reply = new Uint8Array(split.length);
+            for (let i in split) {
+                reply[i] = this.ord(split[i]);
+            }
+            return reply;
+        }
+
+        function arrayToStr(array) {
+            /* convert a ByteArray into a string
+             */
+            return String.fromCharCode.apply(null, new Uint8Array(array));
+        }
+
+        function toUrlBase64(data) {
+            /* Convert a binary array into a URL safe base64 string
+            */
+            return btoa(data)
+                .replace(/\+/g, "-")
+                .replace(/\//g, "_")
+                .replace(/=/g, "")
+        }
+
+        function fromUrlBase64(data) {
+            /* return a binary array from a URL safe base64 string
+            */
+            return atob(data
+                .replace(/\-/g, "+")
+                .replace(/\_/g, "/"));
+        }
+
+        const header = { "typ": "JWT", "alg": "ES256" }
+        const claims = {
+            "aud": "https://updates.push.services.mozilla.com",//"https://fcm.googleapis.com"
+            "exp": Math.floor(Date.now() * .001 + 3600),
+            "sub": "mailto:firefox.com.40010791@cieszynski.de"
+        }
+        const base64 = {
+            decode: function (data) { return atob(data.replace(/_/g, '/').replace(/-/g, '+')); },
+            encode: function (data) { return btoa(data).replace(/\//g, '_').replace(/\+/g, '-').replace(/=+$/, '') }
+        }
+
+        function doit() {
+            crypto.subtle.generateKey(
+                {
+                    name: "ECDSA",
+                    namedCurve: "P-256"
+                },
+                true,
+                ["sign", "verify"]
+            ).then(keyPair => {
+                let headStr = toUrlBase64(
+                    JSON.stringify({ typ: "JWT", alg: "ES256" }));
+                let claimStr = toUrlBase64(
+                    JSON.stringify(claims))
+                let content = headStr + "." + claimStr;
+                let signatory = strToArray(content);
+
+                // const payload = `${toUrlBase64(JSON.stringify(header))}.${toUrlBase64(JSON.stringify(claims))}`;
+                // console.log(JSON.stringify(header), JSON.stringify(claims))
+
+                //const buffer = strToArray(payload)//new TextEncoder().encode(JSON.stringify(payload));
+                crypto.subtle.sign({ name: "ECDSA", namedCurve: "P-256", hash: { name: "SHA-256" } }, keyPair.privateKey, signatory).then(signature => {
+
+                    let sig = toUrlBase64(arrayToStr(signature));
+
+                    //const jwt = `${payload}.${toUrlBase64(arrayToStr(signature))}`
+
+                    console.log(content + "." + sig)
+                    const jwt = content + "." + sig
+                    crypto.subtle.exportKey(
+                        "jwk",
+                        keyPair.publicKey
+                    ).then(key => {
+                        console.log(JSON.stringify(key))
+                    })
+
+                    crypto.subtle.exportKey(
+                        "jwk",
+                        keyPair.privateKey
+                    ).then(key => {
+                        console.log(JSON.stringify(key))
+                    })
+
+                    crypto.subtle.exportKey('jwk', keyPair.publicKey)
+                        .then(key => {
+                            return toUrlBase64("\x04" +
+                                fromUrlBase64(key.x) +
+                                fromUrlBase64(key.y))
+                        })
+                        .then(pubKey => {
+
+                            if ('serviceWorker' in navigator && 'PushManager' in window) {
+                                navigator.serviceWorker.register('sw.js');
+                                navigator.serviceWorker.ready.then(registration => {
+                                    registration.pushManager.subscribe({
+                                        userVisibleOnly: true,
+                                        applicationServerKey: pubKey//toUrlBase64(arrayToStr(keyPair.publicKey))
+                                    }).then(subscription => {
+                                        console.log(JSON.stringify(subscription));
+
+                                        fetch(subscription.endpoint, {
+                                            method: 'POST'/* , mode: 'no-cors'*/, headers: {"TTL": 2419200,
+                                                "Authorization": `WebPush ${jwt}`, "Crypto-Key": `p256ecdsa=${pubKey}`
+                                                /* "Authorization": `vapid t=${jwt} k=${x.public}`,  "Content-Encoding": "aes128gcm"*/
+                                            }
+                                        })
+                                            .then(response => response.text())
+                                            .then(data => { console.log(data) })
+                                    })
+                                })
+                            }
+                        }) //
+                })
+            })
+        }
+    </script>
+    <button onclick="doit()">Do it</button>
+</body>
+
+</html>
