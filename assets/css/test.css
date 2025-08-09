@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'fjallaoneregular';
+    src: url("/assets/fonts/fjallaone-regular-webfont.woff2") format('woff2'),
+        url("/assets/fonts/fjallaone-regular-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "literal";
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/fonts/literal.bold-webfont.woff2") format("woff2"),
+        url("/assets/fonts/literal.bold-webfont.woff") format("woff");
+}
+
+@layer default, theme;
+
+@layer default {
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    body {
+        gap: 16px;
+        display: flex;
+        flex-flow: column;
+        width: min-content;
+        width: 100%;
+        max-width: 550px;
+        padding: 16px;
+    }
+
+    footer {
+        display: flex;
+        padding: 16px;
+        border-radius: 16px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        & img {
+            display: block;
+            border-radius: 16px;
+            width: 100%;
+        }
+    }
+
+    html {
+        display: flex;
+        flex-flow: column;
+        place-content: center;
+        place-items: center;
+        min-height: 100%;
+    }
+
+    main {
+        gap: 16px;
+        display: flex;
+        flex-flow: row wrap;
+    }
+}

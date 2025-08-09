@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>test1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/test.css">
+
+    <style>
+        @layer theme {
+
+            main>a {
+                background: #555;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                aspect-ratio: 2;
+                min-width: 200px;
+                border-radius: 16px;
+                text-align: center;
+                overflow: clip;
+                flex: 1;
+
+                &:hover {
+                    background: #444;
+                }
+
+                & img {
+                    border-radius: 24px;
+                    padding: 16px;
+                    width: 100%;
+                }
+            }
+
+            body {
+                font-family: literal;
+                color: #ddd;
+            }
+
+            footer {
+                background-color: #555;
+            }
+
+            h1 {
+                padding: 16px;
+                background-color: #555;
+                border-radius: 16px;
+            }
+
+            header {
+                border-radius: 16px;
+                background-color: #555;
+            }
+
+            html {
+                background: #666;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <img style="width: 100%" src="/assets/images/stephan-cieszynski-plain.svg" alt="Homepage Stephan Cieszynski">
+    </h1>
+    <main>
+        <a href="/travel/">
+            Travel
+        </a>
+        <a href="/test2.html">
+            <img src="/assets/images//7781-strahlen-plain.svg" alt="1977 bis 1981">
+        </a>
+    </main>
+    <footer>
+        <a href="/rechtliches.html">Impressum | Datenschutz</a>
+    </footer>
+</body>
+
+</html>
