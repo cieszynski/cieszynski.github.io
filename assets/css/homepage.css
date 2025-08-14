@@ -1,0 +1,60 @@
+@import url("/assets/css/default.css");
+
+@layer theme {
+    address {
+        font-family: serif;
+    }
+
+    body {
+        font-family: literal;
+        color: #ddd;
+    }
+
+    footer {
+        background-color: #555;
+    }
+
+    h1 {
+        padding: 16px;
+        background-color: #555;
+        border-radius: 16px;
+        text-align: center;
+    }
+
+    html {
+        background: #666;
+    }
+
+
+    main>a {
+        background: #555;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 2;
+        min-width: 200px;
+        border-radius: 16px;
+        text-align: center;
+        overflow: clip;
+        flex: 1;
+
+        &:hover {
+            background-color: #444;
+        }
+
+        & img {
+            border-radius: 24px;
+            padding: 16px;
+            width: 100%;
+        }
+    }
+
+    ol {
+        font-family: serif;
+    }
+
+    p {
+        font-family: serif;
+    }
+}

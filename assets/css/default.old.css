@@ -1,0 +1,91 @@
+@font-face {
+    font-family: "literal";
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/fonts/literal.bold-webfont.woff2") format("woff2"),
+        url("/assets/fonts/literal.bold-webfont.woff") format("woff");
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    color: #ddd;
+    background: #666;
+    font-family: literal, sans-serif;
+    place-content: center;
+    place-items: center;
+    min-height: 100%;
+    padding: 16px;
+}
+
+h1 {
+    width: min-content;
+    padding: 16px;
+    font-size: clamp(30px, 6.667vw, 60px);
+    line-height: .9;
+    display: grid;
+    column-gap: 16px;
+    border-radius: 16px;
+    background: #555;
+
+    & span:first-of-type {
+        display: inline-flex;
+        justify-content: end;
+        align-items: end;
+    }
+
+    & img {
+        width: clamp(100px, 20vw, 180px);
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+main {
+    gap: 16px;
+    display: flex;
+    flex-flow: row wrap;
+    width: min-content;
+
+    & div,
+    a {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 2;
+        min-width: 180px;
+        border-radius: 16px;
+        background: #555;
+        text-align: center;
+        overflow: clip;
+        flex: 1;
+
+        &:hover {
+            background: #444;
+        }
+
+        & img {
+            border-radius: 24px;
+            padding: 16px;
+            width: 100%;
+        }
+    }
+}
