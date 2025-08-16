@@ -49,6 +49,7 @@
         border-radius: 16px;
         justify-content: center;
         align-items: center;
+        flex-flow: column;
     }
 
     h1 {

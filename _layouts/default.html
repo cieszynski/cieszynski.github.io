@@ -8,10 +8,10 @@
     <meta name="robots" content="{{ page.robots | default: 'follow, index' }}">
     <meta name="theme-color" content="#666" />
 
+    <link rel="preload" href="{{ page.stylesheet | prepend: 'assets/css/' | relative_url  }}" as="style">
+    <link rel="preload" href="/assets/fonts/fjallaone-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/assets/fonts/literal.bold-webfont.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="stylesheet" href="{{ page.stylesheet | prepend: 'assets/css/' | relative_url  }}">
-    <link rel="stylesheet" href="{{ page.stylesheet | prepend: 'assets/css/' | relative_url  }}" as="style" rel="preload">
-    <link href="/assets/fonts/fjallaone-regular-webfont.woff2" as="font" rel="preload" type="font/woff2" crossorigin="">
-    <link href="/assets/fonts/literal.bold-webfont.woff2" as="font" rel="preload" type="font/woff2" crossorigin="">
 </head>
 
 <body>

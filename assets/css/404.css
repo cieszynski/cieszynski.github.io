@@ -1,0 +1,16 @@
+@import url("/assets/css/default.css");
+
+
+@layer theme {
+
+    html {
+        background: #666;
+    }
+
+    p {
+        color: #fff;
+        text-align: center;
+        font-family: literal;
+        font-size: 30px;
+    }
+}
