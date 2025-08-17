@@ -3,6 +3,16 @@
 
 @layer theme {
 
+    a {
+        color: #fff;
+        padding: 16px;
+        font-family: literal;
+        border-radius: 16px;
+        border: 4px solid #ccc;
+        display: inline-block;
+        margin: auto;
+    }
+
     html {
         background: #666;
     }

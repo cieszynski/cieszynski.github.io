@@ -1,3 +1,5 @@
 User-agent: *
 Disallow: /assets/
 Disallow: /travel/assets/
+Disallow: /7781/assets/
+Disallow: /dev/assets/

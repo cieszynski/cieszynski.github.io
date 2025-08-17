@@ -27,6 +27,10 @@
         text-decoration: none;
     }
 
+    .nobr {
+        white-space: nowrap;
+    }
+
 
     a {
         text-decoration: none;
