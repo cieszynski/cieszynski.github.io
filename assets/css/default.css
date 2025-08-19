@@ -15,6 +15,14 @@
         url("/assets/fonts/literal.bold-webfont.woff") format("woff");
 }
 
+@font-face {
+    font-family: "dela";
+    font-style: normal;
+    font-weight: 100 400;
+    font-display: swap;
+    src: url("/assets/fonts/dela.woff2") format("woff2");
+}
+
 @layer default, theme;
 
 @layer default {
@@ -57,6 +65,8 @@
     }
 
     h1 {
+        overflow-wrap: anywhere;
+        
         & img {
             display: block;
             border-radius: 16px;
