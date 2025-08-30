@@ -102,4 +102,9 @@
         padding: 8px 0;
         font-family: serif;
     }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 }
