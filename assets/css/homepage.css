@@ -2,7 +2,7 @@
 
 @layer theme {
     address {
-        font-family: serif;
+        font-family: droidserif;
     }
 
     body {
@@ -48,13 +48,5 @@
             padding: 16px;
             width: 100%;
         }
-    }
-
-    ol {
-        font-family: serif;
-    }
-
-    p {
-        font-family: serif;
     }
 }
