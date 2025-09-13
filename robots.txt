@@ -3,3 +3,4 @@ Disallow: /assets/
 Disallow: /travel/assets/
 Disallow: /7781/assets/
 Disallow: /dev/assets/
+Disallow: /klassenfoto.png
