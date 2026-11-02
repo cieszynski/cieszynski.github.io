@@ -14,6 +14,22 @@
     <link rel="preload" href="/assets/fonts/fjallaone-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="preload" href="/assets/fonts/literal.bold-webfont.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="stylesheet" href="{{ page.stylesheet | prepend: 'assets/css/' | relative_url  }}">
+
+    <style>
+        p {
+            span {
+                text-decoration: underline;
+            }
+
+            span::before {
+                content: attr(data-before);
+            }
+
+            span::after {
+                content: attr(data-after);
+            }
+        }
+    </style>
 </head>
 
 <body>
